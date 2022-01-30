@@ -114,7 +114,8 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 alias scan='/home/kali/Documents/scripts/scan'
 alias ls='colorls $@'
 alias mkdire='f(){ mkdir "$@" && for i; do :; done; cd "$i";unset -f f; }; f'
-
+alias sharpyshell='/home/kali/Documents/Github/SharPyShell/SharPyShell.py'
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 source /home/kali/Documents/Github/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/kali/.zprofile
