@@ -1553,13 +1553,17 @@
   #
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
-    #p10k segment -f 208 -i '*' -t 'hello, %n'
-    ips=$(hostname -I | sed 's/ *$//')
-    tgt=""
-    if [[ ! -z $TARGET ]]; then export tgt=T:[$TARGET]; fi
-    add="%F{red}$tgt %F{green}L:[$ips]"
-    p10k segment -t "$add"
+  RED='\033[0;31m'
+  GREEN='\033[0;32m'
+  NC='\033[0m'
+  ips=$(ip -4 -o address | grep -v -i -E "docker|lo " | awk '{ print $4 }' | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}")
+  tgt=""
+  if [[ ! -z $TARGET ]]; then tgt=T:[$TARGET]; fi
+  ip_list=$(echo $ips | tr '\n' ' '| sed 's/ *$//')
+  add="%F{red}$tgt %F{green}L:[$ip_list]"
+  p10k segment -t "$add"
   }
+
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
