@@ -32,6 +32,9 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     # os_icon               # os identifier
+    newline
+    banner
+    newline
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -100,9 +103,10 @@
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     #time                    # current time
-    example
+    #example
+    #banner
     # =========================[ Line #2 ]=========================
-    newline
+    #newline
     #ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy
@@ -1552,18 +1556,14 @@
   # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS. It displays an icon and orange text greeting the user.
   #
   # Type `p10k help segment` for documentation and a more sophisticated example.
-  function prompt_example() {
-  RED='\033[0;31m'
-  GREEN='\033[0;32m'
-  NC='\033[0m'
-  ips=$(ip -4 -o address | grep -v -i -E "docker|lo " | awk '{ print $4 }' | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}")
-  tgt=""
-  if [[ ! -z $TARGET ]]; then tgt=T:[$TARGET]; fi
-  ip_list=$(echo $ips | tr '\n' ' '| sed 's/ *$//')
-  add="%F{red}$tgt %F{green}L:[$ip_list]"
-  p10k segment -t "$add"
+  function prompt_example(){
+  #header=$(banner)
+  #p10k segment -e -t "$header"
   }
 
+  function prompt_banner(){
+   p10k segment -t "$(banner)"
+  }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
@@ -1581,7 +1581,7 @@
     # Since prompt_example always makes the same `p10k segment` calls, we can call it from
     # instant_prompt_example. This will give us the same `example` prompt segment in the instant
     # and regular prompts.
-    prompt_example
+    #prompt_example
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
@@ -1595,7 +1595,7 @@
   #   - always:   Trim down prompt when accepting a command line.
   #   - same-dir: Trim down prompt when accepting a command line unless this is the first command
   #               typed after changing current working directory.
-  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=same-dir
 
   # Instant prompt mode.
   #

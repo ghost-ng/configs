@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/kali/.oh-my-zsh"
+export ZSH="/home/unknown/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -77,7 +77,7 @@ ZSH_THEME="avit"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions)
+plugins=(zsh-autosuggestions themes git zsh-navigation-tools)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,11 +111,10 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias scan='/home/kali/Documents/scripts/scan'
+alias scan='/home/unknown/Documents/scripts/scan'
 alias ls='colorls $@'
 alias mkdire='f(){ mkdir "$@" && for i; do :; done; cd "$i";unset -f f; }; f'
-alias sharpyshell='/home/kali/Documents/Github/SharPyShell/SharPyShell.py'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
-source /home/kali/Documents/Github/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/kali/.zprofile
+source /home/unknown/Documents/Github/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/unknown/.zprofile
